@@ -38,17 +38,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterView() {
+export default function LoginView() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case "name":
-        return setName(value);
       case "email":
         return setEmail(value);
       case "password":
@@ -60,8 +58,7 @@ export default function RegisterView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName("");
+    dispatch(authOperations.logIn({ email, password }));
     setEmail("");
     setPassword("");
   };
@@ -74,31 +71,16 @@ export default function RegisterView() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Log in
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="name"
-                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="nName"
-                label="Name"
-                autoFocus
-                onChange={handleChange}
-                value={name}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
+                // id="email"
                 label="Email"
                 name="email"
                 autoComplete="email"
@@ -114,7 +96,7 @@ export default function RegisterView() {
                 name="password"
                 label="Password"
                 type="password"
-                id="password"
+                // id="password"
                 autoComplete="current-password"
                 value={password}
                 onChange={handleChange}
@@ -128,7 +110,7 @@ export default function RegisterView() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Log in
           </Button>
           <Grid container justifyContent="flex-end"></Grid>
         </form>

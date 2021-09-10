@@ -9,9 +9,9 @@ import s from "../UserMenu/UserMenu.module.css";
 const UserMenu = ({ avatar, name, onLogout }) => (
   <div className={s.wrapper}>
     <img className={s.avatar} src={avatar} alt="" width="32" />
-    <span className={s.name}>Вітаю, {name}</span>
+    <span className={s.name}>Welcom, {name}</span>
     <button className={s.button} type="button" onClick={onLogout}>
-      Вийти
+      Go out
     </button>
   </div>
 );
