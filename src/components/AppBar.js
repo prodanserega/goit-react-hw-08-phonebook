@@ -1,8 +1,8 @@
-// import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 import Contacts from "../components/Contacts";
-//import UserMenu from "./UserMenu";
-// import AuthNav from "../components//AuthNav";
-// import { authSelectors } from "../redux/auth";
+import UserMenu from "../components/UserMenu/UserMenu";
+import AuthNav from "../components//AuthNav";
+import authSelectors from "../redux/auth/auth-selectors";
 
 const styles = {
   header: {
@@ -13,12 +13,15 @@ const styles = {
   },
 };
 
-export default function AppBar() {
-  //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  return (
-    <header style={styles.header}>
-      <Contacts />
-      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-    </header>
-  );
-}
+const AppBar = ({ isAuthenticated }) => (
+  <header style={styles.header}>
+    <Contacts />
+    {isAuthenticated ? <UserMenu /> : <AuthNav />}
+  </header>
+);
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps, null)(AppBar);
