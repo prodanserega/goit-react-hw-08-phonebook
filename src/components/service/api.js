@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_DB_HOST;
+axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com";
 
 export const token = {
   set(token) {
@@ -35,12 +35,12 @@ export function addContact(contact) {
   return axios.post("/contacts", contact);
 }
 
-export function deleteContact(id) {
-  return axios.delete(`/contacts/${id}`);
+export function deleteContact(contactId) {
+  return axios.delete(`/contacts/${contactId}`);
 }
 
-export function updateContact(id) {
-  return axios.patch(`/contacts/${id}`);
+export function updateContact(contactId) {
+  return axios.patch(`/contacts/${contactId}`);
 }
 
 export default {

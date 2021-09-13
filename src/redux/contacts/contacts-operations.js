@@ -2,12 +2,12 @@ import action from "./contacts-actions";
 import api from "../../components/service/api";
 
 const fetchContacts = () => async (dispatch) => {
-  dispatch(action.fetchContactRequest());
+  dispatch(action.fetchContactsRequest());
   try {
     const { data } = await api.fetchContacts();
-    dispatch(action.fetchContactSuccess(data));
+    dispatch(action.fetchContactsSuccess(data));
   } catch (error) {
-    dispatch(action.fetchContactError(error.message));
+    dispatch(action.fetchContactsError(error.message));
   }
 };
 
@@ -22,10 +22,10 @@ const addContact = (name, number) => async (dispatch) => {
   }
 };
 
-const deleteContact = (id) => async (dispatch) => {
+const deleteContact = (contactId) => async (dispatch) => {
   dispatch(action.deleteContactRequest());
   try {
-    const { data } = await api.deleteContact(id);
+    const { data } = await api.deleteContact(contactId);
     dispatch(action.deleteContactSuccess(data));
   } catch (error) {
     dispatch(action.deleteContactError(error.message));

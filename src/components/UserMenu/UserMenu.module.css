@@ -8,10 +8,10 @@
 }
 .name {
   padding: 15px;
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 700;
   text-align: center;
-  color: #08831d;
+  color: #1909a7;
 }
 
 .button {
@@ -20,14 +20,14 @@
   align-self: center;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   color: #fff;
-  background-color: #0a8f13;
+  background-color: #1909a7;
   cursor: pointer;
 }
 
 .button:hover,
 .button:focus {
-  background-color: #55ce10;
+  background-color: #2d20e4;
 }

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import authOperations from "../redux/auth/auth-operations";
 
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
+import { Avatar } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";

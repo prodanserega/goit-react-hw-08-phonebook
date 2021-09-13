@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import fetchContacts from "../redux/contacts/contacts-operations";
-import changeFilter from "../redux/contacts/contacts-actions";
-import getAllContacts from "../redux/contacts/contacts-selectors";
-import getLoading from "../redux/contacts/contacts-selectors";
+import contactOperations from "../redux/contacts/contacts-operations";
+import contactActions from "../redux/contacts/contacts-actions";
+import contactSelectors from "../redux/contacts/contacts-selectors";
+
 import Container from "../components/Container/Container";
 import PropTypes from "prop-types";
+import ContactForm from "../components/ContactForm/ContactForm";
+import Filter from "../components/Filter/Filter";
+import ContactList from "../components/ContactList/ContactList";
+import Loader from "../components/Loader/Loader";
 
 class ContactsView extends Component {
   static propTypes = {
@@ -18,27 +22,25 @@ class ContactsView extends Component {
   }
 
   render() {
-    // const { isLoading } = this.props;
+    const { isLoading } = this.props;
     return (
       <Container>
-        {/* <ContactForm />
-  
-          <Filter />
-          <ContactsList />
-  
-          isLoading && <LoaderSpiner />} */}
+        <ContactForm />
+        <Filter />
+        {isLoading && <Loader />}
+        <ContactList />
       </Container>
     );
   }
 }
 const mapStateToProps = (state) => ({
-  contacts: getAllContacts(state),
-  isLoading: getLoading(state),
-  // error: contactsSelectors.getError(state),
+  contacts: contactSelectors.getContacts(state),
+  isLoading: contactSelectors.getLoading(state),
+  error: contactSelectors.getError(state),
 });
 const mapDispatchToProps = (dispatch) => ({
-  fetchContacts: () => dispatch(fetchContacts()),
-  clearFilter: () => dispatch(changeFilter("")),
+  fetchContacts: () => dispatch(contactOperations.fetchContacts()),
+  clearFilter: () => dispatch(contactActions.changeFilter("")),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsView);
